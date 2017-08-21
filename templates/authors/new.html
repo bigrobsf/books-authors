@@ -1,0 +1,9 @@
+{% extends 'authors/base.html' %}
+{% block content %}
+    <h1>New Author entry:</h1>
+    <form action="{{url_for('index')}}" method="POST">
+        First Name: <input type="text" name="first_name"><br>
+        Last Name: <input type="text" name="last_name"><br>
+        <input type="submit" value="Add">
+    </form>
+{% endblock %}

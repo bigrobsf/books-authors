@@ -1,0 +1,14 @@
+{% extends 'books/base.html' %}
+{% block content %}
+    <h1>Selected Book</h1>
+    <p>Title: {{ book.title }}</p>
+    <p>
+        <a href="{{url_for('new_book', author_id=book.author_id)}}">Add a book</a> |
+        <a href="{{url_for('index_books', author_id=book.author_id)}}">List this author's books</a> 
+    </p>
+
+    <p>
+        <a href="{{url_for('edit_book', author_id=book.author_id, book_id=book.id)}}">Edit this book</a> |
+        <a href="{{url_for('index')}}">List all Authors</a>
+    </p>
+{% endblock %}

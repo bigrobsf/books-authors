@@ -1,0 +1,12 @@
+{% extends 'authors/base.html' %}
+{% block content %}
+    <form action="{{url_for('show', id=author.id)}}?_method=PATCH" method="POST">
+        First Name: <input type="text" name="first_name" value="{{author.first_name}}"><br>
+        Last Name: <input type="text" name="last_name" value="{{author.last_name}}"><br>
+        <input type="submit" value="Submit Change"><br>
+    </form>
+    <br>
+    <form action="{{url_for('show', id=author.id)}}?_method=DELETE" method="POST">
+        <input type="submit" value="Delete">
+    </form>
+{% endblock %}
