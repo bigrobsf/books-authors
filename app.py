@@ -17,6 +17,7 @@ class Author(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.Text)
     last_name = db.Column(db.Text)
+    books = db.relationship('Book', cascade="all, delete-orphan", backref='author', lazy='dynamic')
 
     def __init__(self, first_name, last_name):
         self.first_name = first_name
@@ -38,6 +39,8 @@ class Book(db.Model):
         self.title = title
         self.author_id = author_id
 
+    def __repr__(self):
+        return "Book title: {}".format(self.title)
 
 @app.route('/')
 def root():
