@@ -114,10 +114,10 @@ def index_books(author_id):
 
             return redirect(url_for('index'))
         else:
-            book_list = db.session.query(Author.first_name, Author.last_name, Book.id,
-                                         Book.title, Book.author_id).join(Book,
-                                         Author.id == Book.author_id).filter(Author.id == author_id)
-            return render_template('books/index.html', books=book_list)
+            author = Author.query.get(author_id)
+            books = author.books.all()
+
+            return render_template('books/index.html', books=books)
     else:
         return render_template('404.html')
 

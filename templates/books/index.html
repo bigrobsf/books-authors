@@ -1,6 +1,7 @@
 {% extends 'books/base.html' %}
 {% block content %}
     <h1>Book Listing</h1>
+
     <table>
     <tr>
         <th>Author</th>
@@ -10,11 +11,13 @@
     </tr>
     {% for book in books %}
     <tr>
-        <td>{{ book.first_name }} {{book.last_name}}</td>
+        <td>{{ book.author.first_name }} {{book.author.last_name}}</td>
         <td>{{ book.title }}</td>
         <td><a href="{{url_for('show', id=book.author_id)}}">View Author</a></td>
         <td><a href="{{url_for('show_book', author_id=book.author_id, book_id=book.id)}}">View Book</a></td>
     </tr>
     {% endfor %}
     </table>
+
+
 {% endblock %}
